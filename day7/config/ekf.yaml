@@ -1,0 +1,31 @@
+# sensor_fusion/config/ekf_localization.config
+
+# EKF Configuration for sensor fusion with IMU
+ekf_localization_node:
+  frequency: 30
+
+  two_d_mode: false
+
+  map_frame: odom
+  odom_frame: odom
+  base_link_frame: base_link
+
+  # IMU Parameters
+  imu0:
+    type: IMU
+    topic: /imu_data
+    queue_size: 10
+    gyro_bias_noise: 1e-3
+    accel_bias_noise: 1e-3
+    orientation: false
+    linear_acceleration: true
+    angular_velocity: true
+
+  # EKF Parameters
+  magnetic_declination_radians: 0.0
+  timestamp_transform: true
+  transform_time_offset: 0.0
+  transform_timeout: 0.0
+  imu0_differential: false
+  remove_gravitational_acceleration: false
+  gravity: 9.80665
